@@ -8,3 +8,6 @@ URL : http://localhost:8080/api/auth/register
 
 Checklist:
 URL: http://localhost:8080/api/checklists
+
+Items:
+URL: http://localhost:8080/api/items/1
