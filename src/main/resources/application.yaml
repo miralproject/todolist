@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: todolist
+    version: Todolist v1.0
+  datasource:
+    url: jdbc:mysql://localhost:3306/checklist_db?useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      minimumIdle: 2
+      maximumPoolSize: 5
+      cachePrepStmts: true
+      prepStmtCacheSize: 250
+      prepStmtCacheSqlLimit: 2048
+      useServerPrepStmts: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  logging:
+    level:
+      com.zaxxer.hikari: DEBUG
+      org.hibernate.SQL: DEBUG
+      org.hibernate.type.descriptor.sql: TRACE
+      org.springframework.security: DEBUG
