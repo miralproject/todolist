@@ -1,48 +1,50 @@
 package id.bts.todolist.controller;
 
-import java.util.Optional;
-
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import id.bts.todolist.dto.ChecklistItemDTO;
 import id.bts.todolist.entity.ChecklistItem;
 import id.bts.todolist.service.ItemService;
+import org.modelmapper.ModelMapper;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/items")
 public class ItemController {
-    private final ItemService service;
 
-    public ItemController(ItemService itemService) {
-        this.service = itemService;
+    private final ItemService itemService;
+    private final ModelMapper modelMapper;
+
+    public ItemController(ItemService itemService, ModelMapper modelMapper) {
+        this.itemService = itemService;
+        this.modelMapper = modelMapper;
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ChecklistItem> getItemById(@PathVariable Long id) {
-        Optional<ChecklistItem> item = service.getItemById(id);
-        return item.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    public ResponseEntity<ChecklistItemDTO> getItemById(@PathVariable Long id) {
+        Optional<ChecklistItem> item = itemService.getItemById(id);
+        return item.map(value -> ResponseEntity.ok(modelMapper.map(value, ChecklistItemDTO.class)))
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public ChecklistItem createItem(@RequestBody ChecklistItem item) {
-        return service.createItem(item);
+    public ResponseEntity<ChecklistItemDTO> createItem(@RequestBody ChecklistItemDTO itemDTO) {
+        ChecklistItem item = modelMapper.map(itemDTO, ChecklistItem.class);
+        ChecklistItem savedItem = itemService.createItem(item);
+        return ResponseEntity.ok(modelMapper.map(savedItem, ChecklistItemDTO.class));
     }
 
     @PutMapping("/{id}")
-    public ChecklistItem updateItem(@RequestBody ChecklistItem item) {
-        return service.updateItem(item);
+    public ResponseEntity<ChecklistItemDTO> updateItem(@PathVariable Long id, @RequestBody ChecklistItemDTO itemDTO) {
+        ChecklistItem item = modelMapper.map(itemDTO, ChecklistItem.class);
+        ChecklistItem updatedItem = itemService.updateItem(id, item);
+        return ResponseEntity.ok(modelMapper.map(updatedItem, ChecklistItemDTO.class));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteItem(@PathVariable Long id) {
-        service.deleteItem(id);
+        itemService.deleteItem(id);
         return ResponseEntity.noContent().build();
     }
 }

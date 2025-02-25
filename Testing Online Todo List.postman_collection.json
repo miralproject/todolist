@@ -1,0 +1,481 @@
+{
+	"info": {
+		"_postman_id": "8cb9f369-4f03-473b-ba8e-ec0ac421772f",
+		"name": "Testing Online Todo List",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36600729",
+		"_collection_link": "https://ids111.postman.co/workspace/IDS-Workspace~9bfce955-43e9-436a-8aaf-5da863e1a45f/collection/36600729-8cb9f369-4f03-473b-ba8e-ec0ac421772f?action=share&source=collection_link&creator=36600729"
+	},
+	"item": [
+		{
+			"name": "Checklist",
+			"item": [
+				{
+					"name": "Get Checklist",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJvcGVyYXRvciIsImlhdCI6MTc0MDQ4ODM4OCwiZXhwIjoxNzQwNDkwMTg4fQ.rKzv4qPH1H-GK-Gp51z5mRawO7fxfk3nnm2PbAOt8U0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/checklists",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"checklists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Checklist Detail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJvcGVyYXRvciIsImlhdCI6MTc0MDQ4ODM4OCwiZXhwIjoxNzQwNDkwMTg4fQ.rKzv4qPH1H-GK-Gp51z5mRawO7fxfk3nnm2PbAOt8U0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/checklists/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"checklists",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Checklist",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJvcGVyYXRvciIsImlhdCI6MTc0MDQ4ODM4OCwiZXhwIjoxNzQwNDkwMTg4fQ.rKzv4qPH1H-GK-Gp51z5mRawO7fxfk3nnm2PbAOt8U0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/checklists/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"checklists",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create And Update Checklist",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJvcGVyYXRvciIsImlhdCI6MTc0MDQ4ODM4OCwiZXhwIjoxNzQwNDkwMTg4fQ.rKzv4qPH1H-GK-Gp51z5mRawO7fxfk3nnm2PbAOt8U0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Checklist Title 2\",\r\n    \"items\": [\r\n        {\r\n            \"name\": \"Buy groceries 2\",\r\n            \"completed\": false\r\n        },\r\n        {\r\n            \"name\": \"Walk the dog 2\",\r\n            \"completed\": false\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/checklists",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"checklists"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "ini updated success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 5,\r\n    \"title\": \"Checklist Title 1 edit\",\r\n    \"items\": [\r\n        {\r\n            \"name\": \"Buy groceries 1 edit\",\r\n            \"completed\": false\r\n        },\r\n        {\r\n            \"name\": \"Walk the dog 1 edit\",\r\n            \"completed\": true\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/checklists",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"checklists"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 25 Feb 2025 13:09:21 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 5,\n    \"title\": \"Checklist Title 1 edit\",\n    \"items\": [\n        {\n            \"id\": 13,\n            \"name\": \"Buy groceries 1 edit\",\n            \"completed\": true,\n            \"checklistId\": 5\n        },\n        {\n            \"id\": 14,\n            \"name\": \"Walk the dog 1 edit\",\n            \"completed\": true,\n            \"checklistId\": 5\n        }\n    ]\n}"
+						},
+						{
+							"name": "Create Checklist Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"Checklist Title 2\",\r\n    \"items\": [\r\n        {\r\n            \"name\": \"Buy groceries 2\",\r\n            \"completed\": false\r\n        },\r\n        {\r\n            \"name\": \"Walk the dog 2\",\r\n            \"completed\": false\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/checklists",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"checklists"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 25 Feb 2025 13:10:49 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 6,\n    \"title\": \"Checklist Title 2\",\n    \"items\": [\n        {\n            \"id\": 15,\n            \"name\": \"Buy groceries 2\",\n            \"completed\": false,\n            \"checklistId\": 6\n        },\n        {\n            \"id\": 16,\n            \"name\": \"Walk the dog 2\",\n            \"completed\": false,\n            \"checklistId\": 6\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Items",
+			"item": [
+				{
+					"name": "Items Detail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJvcGVyYXRvciIsImlhdCI6MTc0MDQ4ODM4OCwiZXhwIjoxNzQwNDkwMTg4fQ.rKzv4qPH1H-GK-Gp51z5mRawO7fxfk3nnm2PbAOt8U0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/items/14",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"items",
+								"14"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJvcGVyYXRvciIsImlhdCI6MTc0MDQ4ODM4OCwiZXhwIjoxNzQwNDkwMTg4fQ.rKzv4qPH1H-GK-Gp51z5mRawO7fxfk3nnm2PbAOt8U0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/items/14",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"items",
+								"14"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJvcGVyYXRvciIsImlhdCI6MTc0MDQ4ODM4OCwiZXhwIjoxNzQwNDkwMTg4fQ.rKzv4qPH1H-GK-Gp51z5mRawO7fxfk3nnm2PbAOt8U0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Buy groceries 1 Edit donk\",\r\n    \"completed\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/items/14",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"items",
+								"14"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authz",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"operator\",\r\n    \"email\": \"operator@gamil.com\",\r\n    \"password\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"admin\",\r\n    \"password\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/auth/generate-token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"generate-token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

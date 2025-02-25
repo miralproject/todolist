@@ -2,7 +2,6 @@ package id.bts.todolist.service;
 
 import java.util.Optional;
 
-import org.hibernate.cache.spi.support.AbstractReadWriteAccess.Item;
 import org.springframework.stereotype.Service;
 
 import id.bts.todolist.entity.ChecklistItem;
@@ -24,11 +23,20 @@ public class ItemService {
         return repo.save(item);
     }
 
-    public ChecklistItem updateItem(ChecklistItem item) {
-        return repo.save(item);
+    public ChecklistItem updateItem(Long id, ChecklistItem newItem) {
+        return repo.findById(id)
+                .map(existingItem -> {
+                    existingItem.setName(newItem.getName());
+                    existingItem.setCompleted(newItem.isCompleted());
+                    return repo.save(existingItem);
+                })
+                .orElseThrow(() -> new RuntimeException("Item not found with id: " + id));
     }
 
     public void deleteItem(Long id) {
+        if (!repo.existsById(id)) {
+            throw new RuntimeException("Item not found with id: " + id);
+        }
         repo.deleteById(id);
-    } 
+    }
 }
